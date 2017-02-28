@@ -1,0 +1,245 @@
+<html>
+  <head>
+    <title>Facebook AB Testing</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="jquery-ui.min.css" />
+
+    <script src="jquery.js"></script>
+    <script src="jquery-ui.min.js"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="main.js"></script>
+
+    <script type="text/javascript">
+      // google sheets API
+      var CLIENT_ID = '182593711066-0j238r6bonlof249sa5k6l8vj13s62oo.apps.googleusercontent.com';
+      var SCOPES = ["https://www.googleapis.com/auth/spreadsheets"];
+
+      function checkAuth() {
+        console.log("checkAuth");
+        gapi.auth.authorize(
+          {
+            'client_id': CLIENT_ID,
+            'scope': SCOPES.join(' '),
+            'immediate': true
+          }, handleAuthResult);
+      }
+
+      function handleAuthResult(authResult) {
+        var authorizeDiv = $("#authorize-div");
+        if (authResult && !authResult.error) {
+          console.log("authed");
+          authorizeDiv.hide();
+          loadSheetsApi();
+        } else {
+          console.log("NOT authed");
+          authorizeDiv.show();
+        }
+      }
+
+      function handleAuthClick(event) {
+        gapi.auth.authorize(
+          {client_id: CLIENT_ID, scope: SCOPES, immediate: false},
+          handleAuthResult);
+        return false;
+      }
+
+      function loadSheetsApi() {
+        console.log("loadSheetsApi");
+        var discoveryUrl =
+            'https://sheets.googleapis.com/$discovery/rest?version=v4';
+        gapi.client.load(discoveryUrl);
+      }
+    </script>
+
+    <script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
+  </head>
+  <body>
+
+    <div class="text-center" id="authorize-div" style="display: none;">
+      <span>Authorize access to Google Sheets API</span>
+      <!--Button for the user to click to initiate auth sequence -->
+      <button id="authorize-button" onclick="handleAuthClick(event)">
+        Authorize
+      </button>
+    </div>
+
+    <form name="ab_form">
+      <h1>Facebook AB Testing Tool</h1>
+
+      <div class="contentform">
+
+        <div class="wrapper">
+
+          <div class="main">
+            <div class="alert alert-danger">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              Please ensure that you have filled up all information in this section.
+            </div>
+          </div>
+
+          <div class="successResponse">
+            <div class="alert alert-success">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <div id="success-msg"></div>
+            </div>
+          </div>
+
+          <div class="errorResponse">
+            <div class="alert alert-danger">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <div id="error-msg"></div>
+            </div>
+          </div>
+
+          <div class="dateError">
+            <div class="alert alert-danger">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              Please ensure that the end date does not fall on or before the start date.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <p>Name of AB Study <span>*</span></p>
+            <input type="text" name="name" id="name" />
+          </div>
+
+          <div class="form-group">
+            <p>What are you testing? (e.g. creative) <span>*</span></p>
+            <input type="text" name="description" id="description" />
+          </div>
+
+          <div class="form-group">
+            <p>Start Date (mm/dd/yyyy) <span>*</span></p>
+            <input type="text" name="startdate" id="startdate" />
+          </div>
+
+          <div class="form-group">
+            <p>End Date (mm/dd/yyyy) <span>*</span></p>
+            <input type="text" name="enddate" id="enddate" />
+          </div>
+
+          <div class="form-group">
+            <p>Where are you testing? <span>*</span></p>
+            <select class="form-control" id="type_dropdown">
+              <option value="" disabled selected style="display: none;">-- choose one --</option>
+              <option value="campaigns">Campaign Level</option>
+              <option value="adsets">Ad Set Level</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <p>Select a Country: <span>*</span></p>
+            <select class="form-control" id="country_dropdown">
+              <option value="" disabled selected style="display: none;">-- choose one --</option>
+              <option value="0">Indonesia</option>
+              <option value="1">Malaysia</option>
+              <option value="2">Philippines</option>
+              <option value="3">Singapore</option>
+              <option value="4">Thailand</option>
+              <option value="5">Vietnam</option>
+              <option value="6">Angkas</option>
+            </select>
+          </div>
+
+          <div class="row">&nbsp;</div>
+
+          <div class="group-a">
+            <div class="alert alert-danger">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              Please ensure that you have filled up all information for Group A.
+            </div>
+          </div>
+
+          <div>Group A <span>*</span></div>
+          <div class="group-container">
+            <div class="form-group">
+              <p>Name</p>
+              <input type="text" name="name1" id="name1" />
+            </div>
+
+            <div class="form-group">
+              <p>ID</p>
+              <input type="text" name="id1" id="id1" />
+            </div>
+          </div>
+
+          <div class="group-b">
+            <div class="alert alert-danger">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              Please ensure that you have filled up all information for Group B.
+            </div>
+          </div>
+
+          <div>Group B <span>*</span></div>
+          <div class="group-container">
+            <div class="form-group">
+              <p>Name</p>
+              <input type="text" name="name2" id="name2" />
+            </div>
+
+            <div class="form-group">
+              <p>ID</p>
+              <input type="text" name="id2" id="id2" />
+            </div>
+          </div>
+
+          <label class="switch">
+            <input type="checkbox">
+            <div class="slider round"></div>
+          </label>
+
+          <div class="group-container-wrapper">
+            <div>Group C</div>
+            <div class="group-container">
+              <div class="form-group">
+                <p>Name</p>
+                <input type="text" name="name3" id="name3" />
+              </div>
+
+              <div class="form-group">
+                <p>ID</p>
+                <input type="text" name="id3" id="id3" />
+              </div>
+            </div>
+
+            <div>Group D</div>
+            <div class="group-container">
+              <div class="form-group">
+                <p>Name</p>
+                <input type="text" name="name4" id="name4" />
+              </div>
+
+              <div class="form-group">
+                <p>ID</p>
+                <input type="text" name="id4" id="id4" />
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <button type="submit" class="submit-btn">Send</button>
+
+    </form>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-71542236-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+
+  </body>
+</html>
