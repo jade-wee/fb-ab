@@ -119,7 +119,7 @@ $(document).ready(function() {
 
     var fb_access_token = "";
     if (parseInt($("#country_dropdown").val()) === 6) {
-      fb_access_token = "EAAFNXrCDMmsBAN4MOF1h3CFY8iiTqOoPFDZBWnXFaosV567GiESZA6ZBxsiuXaOKOBBuf1RaGLqDkbLp2taXikDp0ORGRJBvDkgyTa1Xv4WDZCnFh1EkhuZAQ5qeTwsZC79kk0ZBqS4V98RlHghe2YT1HOHqddZBKnZCHuCAWecPAjwZDZD";
+      fb_access_token = "EAADeZBgSHnjsBAJi4JGHWUpFeA13bm2SjvOfDL1llxouZB4TSJPZBLZAw2TIgFZA9pbDAuEfD4dsysKiPHcSOkDy1n5ZBAmZC7Fo6I3q65PJYFkHX0h8O2cBFot6jFjD0PCZBzYMMs2aGriUv551kvlaV1Mvltmd7ZC8NJNBjnZA1xkwZDZD";
     } else {
       fb_access_token = "EAADeZBgSHnjsBAJi4JGHWUpFeA13bm2SjvOfDL1llxouZB4TSJPZBLZAw2TIgFZA9pbDAuEfD4dsysKiPHcSOkDy1n5ZBAmZC7Fo6I3q65PJYFkHX0h8O2cBFot6jFjD0PCZBzYMMs2aGriUv551kvlaV1Mvltmd7ZC8NJNBjnZA1xkwZDZD";
     }
@@ -149,7 +149,7 @@ $(document).ready(function() {
 
     var fb_biz_id = "";
     if (parseInt($("#country_dropdown").val()) === 6) {
-      fb_biz_id = "1450502334977976";
+      fb_biz_id = "1850079605211859";
     } else {
       fb_biz_id = "683259405096319";
     }
