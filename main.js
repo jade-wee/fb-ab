@@ -155,7 +155,7 @@ $(document).ready(function() {
     }
 
     $.ajax({
-      url: "https://graph.facebook.com/v2.7/" + fb_biz_id + "/ad_studies",
+      url: "https://graph.facebook.com/v2.8/" + fb_biz_id + "/ad_studies",
       type: 'POST',
       dataType: 'json',
       data: formData,
