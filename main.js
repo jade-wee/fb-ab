@@ -87,9 +87,11 @@ $(document).ready(function() {
     var audience = 50;
     if ($("#name3").val() !== "" && $("#id3").val() !== "") {
       audience = 100/3;
+      audience.toFixed(2);
     }
     if ($("#name4").val() !== "" && $("#id4").val() !== "") {
       audience = 25;
+      audience.toFixed(2);
     }
 
     var cells_obj = [];
