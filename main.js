@@ -132,7 +132,7 @@ $(document).ready(function() {
 
   // update to Google Sheets if it is a valid Ad Study
   function updateGoogleSheet(ad_study_id) {
-    var all_sheets = ['1yahQgPlrwcTgb5uADyTIt6Ahyzsrks7vPDSzTtF8BoY', '1R8GFHVlpQYVsyZonAPPkjlb-s9j-yoz1-443Rkh1VvQ', '1rG0arZhW_JczujYYNfhol1TzvswLjrNDcAbAGbhROVo', '1RlPLjb6dDylD5HPpMa_iOdTI6bD_xgzumg_LY5BrR-g', '1rPmLfwj4yjcuBuiWKADyGdjYaaUypQUbWZojcnF6xoc', '1L-TLXeCOfuwZbGaIPrPVpu8crYuc3OsAPuK-t6nj0M4', '1NO9W4oo6g6tGHUWd3QQuXrp07cYNklDmVW4S92pgbW8'];
+    var all_sheets = ['1yahQgPlrwcTgb5uADyTIt6Ahyzsrks7vPDSzTtF8BoY', '1R8GFHVlpQYVsyZonAPPkjlb-s9j-yoz1-443Rkh1VvQ', '1rG0arZhW_JczujYYNfhol1TzvswLjrNDcAbAGbhROVo', '1RlPLjb6dDylD5HPpMa_iOdTI6bD_xgzumg_LY5BrR-g', '1rPmLfwj4yjcuBuiWKADyGdjYaaUypQUbWZojcnF6xoc', '1L-TLXeCOfuwZbGaIPrPVpu8crYuc3OsAPuK-t6nj0M4', '1NO9W4oo6g6tGHUWd3QQuXrp07cYNklDmVW4S92pgbW8','1sZtNpmyZJtUNqTsvsB-8UewGC68quyaeo-WfMOzsBWE','11PRc1oyMF5TaeBoFTrY5h9cbxtpzhqz5_Z24hIMlkw0','1sNOJcRXuV6SatzyIjMkE3xQCVf7yPKIMACmnNdJ7d94','1DMLd4wsO_zXazAWitg7Vvguaw8-2Z5d-dMnfQoIoGE0'];
     var country_id = parseInt($("#country_dropdown").val());
     gapi.client.sheets.spreadsheets.values.append({
       spreadsheetId: all_sheets[country_id],
