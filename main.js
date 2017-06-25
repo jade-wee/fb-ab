@@ -96,9 +96,9 @@ $(document).ready(function() {
 
     var cells_obj = [];
     if ($("#type_dropdown").val() === "adsets") {
-      cells_obj.push({name: $("#name1").val(), treatment_percentage: audience, adsets: [$("#id1").val()]}, {name: $("#name2").val(), treatment_percentage: audience, adsets: [parseInt($("#id2").val())]});
+      cells_obj.push({name: $("#name1").val(), treatment_percentage: audience, adsets: [$("#id1").val()]}, {name: $("#name2").val(), treatment_percentage: audience, adsets: [$("#id2").val()]});
     } else {
-      cells_obj.push({name: $("#name1").val(), treatment_percentage: audience, campaigns: [$("#id1").val()]}, {name: $("#name2").val(), treatment_percentage: audience, campaigns: [parseInt($("#id2").val())]});
+      cells_obj.push({name: $("#name1").val(), treatment_percentage: audience, campaigns: [$("#id1").val()]}, {name: $("#name2").val(), treatment_percentage: audience, campaigns: [$("#id2").val()]});
     }
 
     if ($("#name3").val() !== "" && $("#id3").val() !== "") {
