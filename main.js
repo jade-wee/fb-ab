@@ -96,24 +96,24 @@ $(document).ready(function() {
 
     var cells_obj = [];
     if ($("#type_dropdown").val() === "adsets") {
-      cells_obj.push({name: $("#name1").val(), treatment_percentage: audience, adsets: [parseInt($("#id1").val())]}, {name: $("#name2").val(), treatment_percentage: audience, adsets: [parseInt($("#id2").val())]});
+      cells_obj.push({name: $("#name1").val(), treatment_percentage: audience, adsets: [$("#id1").val()]}, {name: $("#name2").val(), treatment_percentage: audience, adsets: [parseInt($("#id2").val())]});
     } else {
-      cells_obj.push({name: $("#name1").val(), treatment_percentage: audience, campaigns: [parseInt($("#id1").val())]}, {name: $("#name2").val(), treatment_percentage: audience, campaigns: [parseInt($("#id2").val())]});
+      cells_obj.push({name: $("#name1").val(), treatment_percentage: audience, campaigns: [$("#id1").val()]}, {name: $("#name2").val(), treatment_percentage: audience, campaigns: [parseInt($("#id2").val())]});
     }
 
     if ($("#name3").val() !== "" && $("#id3").val() !== "") {
       if ($("#type_dropdown").val() === "adsets") {
-        cells_obj.push({name: $("#name3").val(), treatment_percentage: audience, adsets: [parseInt($("#id3").val())]});
+        cells_obj.push({name: $("#name3").val(), treatment_percentage: audience, adsets: [$("#id3").val()]});
       } else {
-        cells_obj.push({name: $("#name3").val(), treatment_percentage: audience, campaigns: [parseInt($("#id3").val())]});
+        cells_obj.push({name: $("#name3").val(), treatment_percentage: audience, campaigns: [$("#id3").val()]});
       }
     }
 
     if ($("#name4").val() !== "" && $("#id4").val() !== "") {
       if ($("#type_dropdown").val() === "adsets") {
-        cells_obj.push({name: $("#name4").val(), treatment_percentage: audience, adsets: [parseInt($("#id4").val())]});
+        cells_obj.push({name: $("#name4").val(), treatment_percentage: audience, adsets: [$("#id4").val()]});
       } else {
-        cells_obj.push({name: $("#name4").val(), treatment_percentage: audience, campaigns: [parseInt($("#id4").val())]});
+        cells_obj.push({name: $("#name4").val(), treatment_percentage: audience, campaigns: [$("#id4").val()]});
       }
     }
 
