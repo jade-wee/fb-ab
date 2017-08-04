@@ -84,7 +84,7 @@ $(document).ready(function() {
     tempEnd.setDate(tempEnd.getDate() + 1);
     var endDate = tempEnd.getTime();
 
-    var audience = 50;
+    var audience = 50.00;
     if ($("#name3").val() !== "" && $("#id3").val() !== "") {
       audience = 100/3;
       audience.toFixed(2);
